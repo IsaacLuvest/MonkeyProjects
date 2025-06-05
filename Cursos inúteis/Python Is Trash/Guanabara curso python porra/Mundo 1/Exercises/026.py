@@ -1,0 +1,6 @@
+Phrase = str(input('Enter a Phrase: '))
+print('The letter A appears', (Phrase.count("a")) ,'times in the sentence.')
+first_letter = Phrase.find('a')
+print('The first letter A appears in the position:', first_letter)
+last_letter = Phrase.rfind('a')
+print('The last letter A appears in the position:', last_letter)
