@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CVRL COMANDO VERMELHO</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      perspective: 1000px;
+    }
+
+    /* Fundo animado de glitch vermelho */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        -45deg,
+        #ff0000 0px,
+        #ff0000 2px,
+        #000 2px,
+        #000 4px
+      );
+      animation: moveBg 2s linear infinite;
+      opacity: 0.1;
+      z-index: 0;
+      filter: blur(1px);
+    }
+
+    @keyframes moveBg {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(-100px, -100px); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      transform-style: preserve-3d;
+      animation: rotate 10s infinite linear;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .cvrl {
+      font-size: 10rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      color: red;
+      text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #ff2200,
+        0 0 80px #ff4400,
+        0 0 100px #ff0000;
+      animation: glitch 1s infinite, pulse 2s infinite;
+    }
+
+    @keyframes rotate {
+      0%   { transform: rotateX(0deg) rotateY(0deg); }
+      50%  { transform: rotateX(360deg) rotateY(180deg); }
+      100% { transform: rotateX(0deg) rotateY(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow:
+        0 0 5px #ff0000,
+        0 0 10px #ff0000,
+        0 0 20px #ff2200,
+        0 0 40px #ff3300; }
+      50% {
+        text-shadow:
+        0 0 20px #ff0000,
+        0 0 40px #ff0000,
+        0 0 80px #ff2200,
+        0 0 120px #ff3300;
+      }
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(2px, -2px); }
+      40% { transform: translate(-2px, 2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(-1px, -1px); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <div class="cvrl">CVRL</div>
+  </div>
+</body>
+</html>
